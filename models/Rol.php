@@ -9,7 +9,7 @@ class Rol {
         $this->pdo = $pdo;
     }
 
-    // Consultar (Rúbrica: Consultar registros)
+
     // Obtiene la lista de roles disponibles en el sistema
     public function obtenerTodos() {
         try {

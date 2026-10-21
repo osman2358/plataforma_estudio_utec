@@ -9,7 +9,7 @@ class MaterialApoyo {
         $this->pdo = $pdo;
     }
 
-    // Insertar (Rúbrica: Insertar registros)
+
     // Permite adjuntar un recurso al grupo
     public function subirMaterial($id_grupo, $id_usuario, $titulo, $enlace_recurso) {
         try {
@@ -29,7 +29,7 @@ class MaterialApoyo {
         }
     }
 
-    // Consultar (Rúbrica: Consultar registros)
+
     // Lista todos los materiales aportados en el grupo
     public function obtenerPorGrupo($id_grupo) {
         try {
@@ -56,7 +56,6 @@ class MaterialApoyo {
         }
     }
 
-    // Eliminar (Rúbrica: Eliminar información)
     // Permite borrar un material si el usuario es el autor
     public function eliminarMaterial($id_material, $id_usuario) {
         try {

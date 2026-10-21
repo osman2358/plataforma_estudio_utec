@@ -9,7 +9,7 @@ class GrupoEstudio {
         $this->pdo = $pdo;
     }
 
-    // Insertar (Rúbrica: Insertar registros)
+   
     // Crea un nuevo grupo de estudio
     public function crear($id_asignatura, $id_creador, $nombre_grupo, $tema_especifico, $max_integrantes) {
         try {
@@ -30,7 +30,7 @@ class GrupoEstudio {
         }
     }
 
-    // Consultar (Rúbrica: Consultar registros)
+  
     // Obtiene todos los grupos disponibles, uniendo con asignaturas y usuarios
     public function obtenerTodosDisponibles() {
         try {
@@ -60,7 +60,7 @@ class GrupoEstudio {
         }
     }
 
-    // Actualizar (Rúbrica: Actualizar registros)
+  
     // Cierra o reabre un grupo específico (si el creador así lo decide)
     public function actualizarEstado($id_grupo, $nuevo_estado) {
         try {

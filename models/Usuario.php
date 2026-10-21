@@ -9,7 +9,7 @@ class Usuario {
         $this->pdo = $pdo;
     }
 
-    // Insertar (Rúbrica: Insertar registros)
+
     // Registra un nuevo estudiante en la base de datos
     public function registrar($carne, $nombre_completo, $correo, $password) {
         try {
@@ -34,7 +34,7 @@ class Usuario {
         }
     }
 
-    // Consultar (Autenticación)
+
     // Valida las credenciales para el inicio de sesión
     public function autenticar($correo, $password_ingresada) {
         try {
@@ -59,7 +59,7 @@ class Usuario {
         }
     }
 
-    // Actualizar (Rúbrica: Actualizar registros)
+
     // Permite al usuario modificar su nombre en el perfil
     public function actualizarPerfil($id, $nombre_completo) {
         try {

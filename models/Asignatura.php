@@ -10,7 +10,7 @@ class Asignatura {
         $this->pdo = $pdo;
     }
 
-    // Consultar (Rúbrica: Consultar registros)
+
     // Obtiene todas las asignaturas activas para mostrarlas en un menú desplegable <select>
     public function obtenerActivas() {
         try {

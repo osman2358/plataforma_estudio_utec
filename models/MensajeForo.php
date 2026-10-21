@@ -9,7 +9,7 @@ class MensajeForo {
         $this->pdo = $pdo;
     }
 
-    // Insertar (Rúbrica: Insertar registros)
+  
     // Guarda un nuevo mensaje en el foro del grupo
     public function enviarMensaje($id_grupo, $id_usuario, $contenido) {
         try {
@@ -28,7 +28,7 @@ class MensajeForo {
         }
     }
 
-    // Consultar (Rúbrica: Consultar registros)
+
     // Obtiene todo el historial de mensajes de un grupo específico
     public function obtenerPorGrupo($id_grupo) {
         try {
@@ -54,7 +54,7 @@ class MensajeForo {
         }
     }
 
-    // Eliminar (Rúbrica: Eliminar información)
+
     // Permite a un estudiante borrar su propio mensaje
     public function eliminarMensaje($id_mensaje, $id_usuario) {
         try {

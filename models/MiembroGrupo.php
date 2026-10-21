@@ -9,7 +9,7 @@ class MiembroGrupo {
         $this->pdo = $pdo;
     }
 
-    // Insertar (Rúbrica: Insertar registros)
+
     // Intenta unir a un usuario al grupo. Aquí entra en acción el Trigger de MySQL.
     public function unirse($id_usuario, $id_grupo) {
         try {
@@ -33,7 +33,7 @@ class MiembroGrupo {
         }
     }
 
-    // Eliminar (Rúbrica: Eliminar información)
+  
     // Permite a un estudiante abandonar un grupo de estudio
     public function abandonar($id_usuario, $id_grupo) {
         try {
