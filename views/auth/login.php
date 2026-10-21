@@ -18,6 +18,13 @@ include '../layouts/header.php';
             <?php unset($_SESSION['error_login']); ?>
         <?php endif; ?>
 
+        <?php if(isset($_SESSION['exito_login'])): ?>
+            <div class="alert alert-success" role="alert">
+                <?= $_SESSION['exito_login']; ?>
+            </div>
+            <?php unset($_SESSION['exito_login']); ?>
+        <?php endif; ?>
+
         <!-- El formulario envía los datos al controlador mediante POST -->
         <form action="../../controllers/AuthController.php" method="POST">
             <input type="hidden" name="accion" value="login">
