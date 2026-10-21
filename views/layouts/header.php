@@ -48,13 +48,13 @@ $base_url = $protocol . "://" . $host . $folder;
                         <a class="nav-link" href="<?= $base_url ?>/views/public/contacto.php">Contacto</a>
                     </li>
                 </ul>
-                <ul class="navbar-nav">
+                    <ul class="navbar-nav ms-auto">
                     <!-- Botones de Autenticación -->
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-outline-primary me-2 px-3 mb-2 mb-lg-0" href="<?= $base_url ?>/views/auth/login.php">Ingresar</a>
+                    <li class="nav-item me-2 mb-2 mb-lg-0">
+                        <a class="btn btn-outline-primary px-3 w-100" href="<?= $base_url ?>/views/auth/login.php">Ingresar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary text-white px-3" href="<?= $base_url ?>/views/auth/registro.php">Registrarse</a>
+                        <a class="btn btn-primary px-3 w-100" href="<?= $base_url ?>/views/auth/registro.php">Registrarse</a>
                     </li>
                 </ul>
             </div>

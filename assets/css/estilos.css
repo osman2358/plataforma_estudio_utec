@@ -82,24 +82,38 @@ main {
 .btn-primary {
     background-color: var(--color-primario);
     border-color: var(--color-primario);
+    color: var(--color-blanco) !important; /* Asegura el texto blanco */
 }
 
 .btn-primary:hover {
     background-color: #12284C;
     border-color: #12284C;
+    color: var(--color-blanco) !important;
     transform: translateY(-2px);
     box-shadow: var(--sombra-suave);
+}
+
+.btn-outline-primary {
+    color: var(--color-primario) !important;
+    border-color: var(--color-primario);
+    background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--color-primario);
+    color: var(--color-blanco) !important;
+    transform: translateY(-2px);
 }
 
 .btn-accent {
     background-color: var(--color-secundario);
     border-color: var(--color-secundario);
-    color: var(--color-blanco);
+    color: var(--color-blanco) !important;
 }
 
 .btn-accent:hover {
     background-color: #008BA8;
-    color: var(--color-blanco);
+    color: var(--color-blanco) !important;
     transform: translateY(-2px);
 }
 
