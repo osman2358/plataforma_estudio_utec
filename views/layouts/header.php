@@ -43,6 +43,14 @@ $base_url = $protocol . "://" . $host . $folder;
                     <li class="nav-item">
                         <a class="nav-link" href="<?= $base_url ?>/index.php">Inicio</a>
                     </li>
+                    
+                    <?php if(isset($_SESSION['usuario_id'])): ?>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold text-primary" href="<?= $base_url ?>/views/app/dashboard.php">Mi Panel</a>
+                    </li>
+                    <?php endif; ?>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="<?= $base_url ?>/views/public/quienes_somos.php">Quiénes somos</a>
                     </li>
