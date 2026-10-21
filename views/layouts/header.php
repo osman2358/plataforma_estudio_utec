@@ -35,7 +35,7 @@ $pagina_actual = basename($_SERVER['PHP_SELF']);
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="<?= $base_url ?>/index.php">Plataforma UTEC</a>
+            <a class="navbar-brand" href="<?= $base_url ?>/index.php">Plataforma Estudio UTEC</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Menú de navegación">
                 <span class="navbar-toggler-icon"></span>
             </button>
