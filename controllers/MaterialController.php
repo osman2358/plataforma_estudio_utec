@@ -5,9 +5,9 @@ require_once '../models/MaterialApoyo.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $accion = $_POST['accion'] ?? '';
 
-    // ==========================================
+  
     // PROCESO DE SUBIR MATERIAL
-    // ==========================================
+
     if ($accion === 'subir_material') {
         // Validar sesión
         if (!isset($_SESSION['usuario_id'])) {
