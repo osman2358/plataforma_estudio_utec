@@ -10,7 +10,8 @@ class GrupoEstudio {
     }
 
    
-    // Crea un nuevo grupo de estudio
+
+    // Crea un nuevo grupo de estudio y retorna su ID
     public function crear($id_asignatura, $id_creador, $nombre_grupo, $tema_especifico, $max_integrantes) {
         try {
             $sql = "INSERT INTO grupos_estudio (id_asignatura, id_creador, nombre_grupo, tema_especifico, max_integrantes) 
@@ -23,9 +24,34 @@ class GrupoEstudio {
             $stmt->bindParam(':tema_especifico', $tema_especifico, PDO::PARAM_STR);
             $stmt->bindParam(':max_integrantes', $max_integrantes, PDO::PARAM_INT);
 
-            return $stmt->execute();
+            if ($stmt->execute()) {
+                // Retorna el ID del registro recién insertado
+                return $this->pdo->lastInsertId(); 
+            }
+            return false;
         } catch (PDOException $e) {
             error_log("Error al crear grupo de estudio: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    // Obtener los detalles de un grupo por su ID
+    public function obtenerPorId($id_grupo) {
+        try {
+            $sql = "SELECT 
+                        g.*, 
+                        a.nombre AS nombre_asignatura, 
+                        u.nombre_completo AS nombre_creador 
+                    FROM grupos_estudio g 
+                    INNER JOIN asignaturas a ON g.id_asignatura = a.id 
+                    LEFT JOIN usuarios u ON g.id_creador = u.id 
+                    WHERE g.id = :id_grupo";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(':id_grupo', $id_grupo, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Error al obtener grupo: " . $e->getMessage());
             return false;
         }
     }
