@@ -3,6 +3,18 @@ CREATE DATABASE IF NOT EXISTS plataforma_estudio DEFAULT CHARACTER SET utf8mb4 C
 USE plataforma_estudio;
 
 -- =========================================================================
+-- CREACIÓN DE USUARIO Y ASIGNACIÓN DE PERMISOS
+-- =========================================================================
+-- Crea el usuario si no existe y le asigna la contraseña
+CREATE USER IF NOT EXISTS 'webuser'@'localhost' IDENTIFIED BY 'proyecto_utec';
+
+-- Otorga estrictamente los permisos de manipulación de datos (DML)
+GRANT SELECT, INSERT, UPDATE, DELETE ON plataforma_estudio.* TO 'webuser'@'localhost';
+
+-- Aplica los cambios de privilegios inmediatamente
+FLUSH PRIVILEGES;
+
+-- =========================================================================
 -- TABLAS DE CATÁLOGOS BASE
 -- =========================================================================
 
