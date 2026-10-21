@@ -3,7 +3,7 @@
 // Asegúrate de que la carpeta en htdocs se llame exactamente 'plataforma_estudio'.
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
 $host = $_SERVER['HTTP_HOST'];
-$folder = "/plataforma_estudio"; 
+$folder = "/plataforma_estudio_utec"; 
 $base_url = $protocol . "://" . $host . $folder;
 ?>
 <!DOCTYPE html>
