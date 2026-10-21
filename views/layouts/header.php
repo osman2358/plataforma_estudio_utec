@@ -1,14 +1,17 @@
 <?php
-// Iniciar sesión de forma segura si no se ha iniciado antes en el archivo que llama al header
+// Iniciar sesión de forma segura si no se ha iniciado antes
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Configuración dinámica de la ruta base del proyecto para evitar enlaces rotos.
+// Configuración dinámica de la ruta base del proyecto
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
 $host = $_SERVER['HTTP_HOST'];
 $folder = "/plataforma_estudio_utec"; 
 $base_url = $protocol . "://" . $host . $folder;
+
+// Detectar la página actual para marcar el menú activo
+$pagina_actual = basename($_SERVER['PHP_SELF']);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -28,9 +31,8 @@ $base_url = $protocol . "://" . $host . $folder;
 </head>
 <body>
 
-<!-- Encabezado Semántico (Requisito WCAG) -->
+<!-- Encabezado Semántico -->
 <header>
-    <!-- Menú de navegación responsivo (Requisito de Rúbrica) -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="<?= $base_url ?>/index.php">Plataforma UTEC</a>
@@ -40,31 +42,33 @@ $base_url = $protocol . "://" . $host . $folder;
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
+                    <!-- Enlace Inicio -->
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $base_url ?>/index.php">Inicio</a>
+                        <a class="nav-link <?= ($pagina_actual == 'index.php') ? 'active fw-bold' : ''; ?>" href="<?= $base_url ?>/index.php">Inicio</a>
                     </li>
                     
+                    <!-- Enlace Dinámico al Dashboard -->
                     <?php if(isset($_SESSION['usuario_id'])): ?>
                     <li class="nav-item">
-                        <a class="nav-link fw-bold text-primary" href="<?= $base_url ?>/views/app/dashboard.php">Mi Panel</a>
+                        <a class="nav-link <?= ($pagina_actual == 'dashboard.php' || $pagina_actual == 'grupos_lista.php' || $pagina_actual == 'grupo_detalle.php' || $pagina_actual == 'grupo_crear.php') ? 'active fw-bold' : ''; ?>" href="<?= $base_url ?>/views/app/dashboard.php">Mi Panel</a>
                     </li>
                     <?php endif; ?>
 
-
+                    <!-- Páginas informativas -->
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $base_url ?>/views/public/quienes_somos.php">Quiénes somos</a>
+                        <a class="nav-link <?= ($pagina_actual == 'quienes_somos.php') ? 'active fw-bold' : ''; ?>" href="<?= $base_url ?>/views/public/quienes_somos.php">Quiénes somos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $base_url ?>/views/public/servicios.php">Servicios</a>
+                        <a class="nav-link <?= ($pagina_actual == 'servicios.php') ? 'active fw-bold' : ''; ?>" href="<?= $base_url ?>/views/public/servicios.php">Servicios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= $base_url ?>/views/public/contacto.php">Contacto</a>
+                        <a class="nav-link <?= ($pagina_actual == 'contacto.php') ? 'active fw-bold' : ''; ?>" href="<?= $base_url ?>/views/public/contacto.php">Contacto</a>
                     </li>
                 </ul>
                 
                 <ul class="navbar-nav ms-auto">
                     <?php if(isset($_SESSION['usuario_id'])): ?>
-                        <!-- Si el usuario inició sesión, mostramos su nombre y botón de salir -->
+                        <!-- Si el usuario inició sesión -->
                         <li class="nav-item me-3 d-flex align-items-center mb-2 mb-lg-0">
                             <span class="text-muted fw-bold">Hola, <?= htmlspecialchars($_SESSION['usuario_nombre']); ?></span>
                         </li>
@@ -72,12 +76,12 @@ $base_url = $protocol . "://" . $host . $folder;
                             <a class="btn btn-outline-danger px-3 w-100" href="<?= $base_url ?>/controllers/AuthController.php?accion=logout">Cerrar Sesión</a>
                         </li>
                     <?php else: ?>
-                        <!-- Si no ha iniciado sesión, mostramos los botones normales -->
+                        <!-- Si no ha iniciado sesión -->
                         <li class="nav-item me-2 mb-2 mb-lg-0">
                             <a class="btn btn-outline-primary px-3 w-100" href="<?= $base_url ?>/views/auth/login.php">Ingresar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-primary px-3 w-100" href="<?= $base_url ?>/views/auth/registro.php">Registrarse</a>
+                            <a class="btn btn-primary px-3 w-100 text-white" href="<?= $base_url ?>/views/auth/registro.php">Registrarse</a>
                         </li>
                     <?php endif; ?>
                 </ul>
