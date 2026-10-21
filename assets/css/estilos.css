@@ -1,0 +1,164 @@
+/* =========================================
+   Importación de Fuentes (Google Fonts)
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* =========================================
+   Variables Globales de Estilo
+   ========================================= */
+:root {
+    /* Paleta de Colores */
+    --color-primario: #1A365D; 
+    --color-secundario: #00A8CC; 
+    --color-fondo: #F8F9FA; 
+    --color-texto: #2D3748; 
+    --color-blanco: #FFFFFF;
+    
+    /* Estilos estructurales */
+    --borde-radio: 8px;
+    --sombra-suave: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --sombra-fuerte: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --transicion: all 0.3s ease;
+}
+
+/* =========================================
+   Reset y Estilos Base
+   ========================================= */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Empuja el footer hacia abajo si hay poco contenido */
+    margin: 0;
+}
+
+main {
+    flex: 1; 
+}
+
+/* Cumplimiento WCAG 2.1 AA: Foco visible por teclado[cite: 25] */
+*:focus-visible {
+    outline: 3px solid var(--color-secundario) !important;
+    outline-offset: 2px;
+}
+
+/* =========================================
+   Sobreescritura de Bootstrap
+   ========================================= */
+
+/* Barra de Navegación */
+.navbar {
+    background-color: var(--color-blanco) !important;
+    box-shadow: var(--sombra-suave);
+    padding: 1rem 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--color-primario) !important;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: var(--color-texto) !important;
+    transition: var(--transicion);
+}
+
+.nav-link:hover, .nav-link.active {
+    color: var(--color-secundario) !important;
+}
+
+/* Botones */
+.btn {
+    border-radius: var(--borde-radio);
+    font-weight: 600;
+    padding: 0.6rem 1.5rem;
+    transition: var(--transicion);
+}
+
+.btn-primary {
+    background-color: var(--color-primario);
+    border-color: var(--color-primario);
+}
+
+.btn-primary:hover {
+    background-color: #12284C;
+    border-color: #12284C;
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-suave);
+}
+
+.btn-accent {
+    background-color: var(--color-secundario);
+    border-color: var(--color-secundario);
+    color: var(--color-blanco);
+}
+
+.btn-accent:hover {
+    background-color: #008BA8;
+    color: var(--color-blanco);
+    transform: translateY(-2px);
+}
+
+/* Tarjetas (Cards) */
+.card {
+    border: none;
+    border-radius: var(--borde-radio);
+    box-shadow: var(--sombra-suave);
+    background-color: var(--color-blanco);
+    transition: var(--transicion);
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.card-header {
+    background-color: var(--color-blanco);
+    border-bottom: 1px solid #E2E8F0;
+    font-weight: 600;
+    color: var(--color-primario);
+}
+
+/* Formularios */
+.form-label {
+    font-weight: 500;
+    color: var(--color-primario);
+}
+
+.form-control, .form-select {
+    border-radius: var(--borde-radio);
+    padding: 0.75rem 1rem;
+    border: 1px solid #CBD5E0;
+    transition: var(--transicion);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--color-secundario);
+    box-shadow: 0 0 0 0.25rem rgba(0, 168, 204, 0.25);
+}
+
+/* =========================================
+   Pie de Página (Footer)
+   ========================================= */
+footer {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    padding: 1.5rem 0;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+footer a {
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
