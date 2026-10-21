@@ -58,6 +58,17 @@ include '../layouts/header.php';
                 </div>
             </div>
         </div>
+
+        <!-- Tarjeta 4: Gestión de Asignaturas -->
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0 text-center p-3">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title fw-bold" style="color: var(--color-primario);">Catálogo de Asignaturas</h5>
+                    <p class="card-text text-muted mb-4">Añade, edita o elimina las materias universitarias que estarán disponibles para crear grupos.</p>
+                    <a href="asignatura.php" class="btn btn-outline-secondary mt-auto w-100">Gestionar Materias</a> 
+                </div>
+            </div>
+        </div>
     </div>
 </main>
 
