@@ -40,17 +40,18 @@ include '../layouts/header.php';
 ?>
 
 <main class="container my-5" style="min-height: 60vh;">
-    <!-- Encabezado y Filtros -->
+<!-- Encabezado y Filtros -->
     <div class="row align-items-center mb-4">
-        <div class="col-md-6">
-            <h1 class="display-6 fw-bold" style="color: var(--color-primario);">
-                <?= $filtro === 'mis_grupos' ? 'Mis Grupos de Estudio' : 'Explorar Grupos'; ?>
+        <div class="col-md-5">
+            <h1 class="display-6 fw-bold mb-0" style="color: var(--color-primario);">
+                <?= $filtro === 'mis_grupos' ? 'Mis Grupos' : 'Explorar Grupos'; ?>
             </h1>
         </div>
-        <div class="col-md-6 text-md-end mt-3 mt-md-0">
-            <a href="grupos_lista.php?filtro=todos" class="btn <?= $filtro === 'todos' ? 'btn-primary' : 'btn-outline-primary'; ?> me-2">Todos los Grupos</a>
+        <!-- Se implementa d-flex flex-wrap y gap-2 para un espaciado perfecto en móviles -->
+        <div class="col-md-7 d-flex flex-wrap justify-content-md-end align-items-center gap-2 mt-3 mt-md-0">
+            <a href="grupos_lista.php?filtro=todos" class="btn <?= $filtro === 'todos' ? 'btn-primary' : 'btn-outline-primary'; ?>">Todos</a>
             <a href="grupos_lista.php?filtro=mis_grupos" class="btn <?= $filtro === 'mis_grupos' ? 'btn-primary' : 'btn-outline-primary'; ?>">Mis Grupos</a>
-            <a href="grupo_crear.php" class="btn btn-accent ms-2">+ Nuevo</a>
+            <a href="grupo_crear.php" class="btn btn-accent">+ Nuevo</a>
         </div>
     </div>
 
@@ -58,7 +59,13 @@ include '../layouts/header.php';
     <div class="row mb-4">
         <div class="col-12">
             <label for="buscador_grupos_lista" class="visually-hidden">Buscar grupo o asignatura</label>
-            <input type="text" class="form-control form-control-lg shadow-sm border-0" id="buscador_grupos_lista" placeholder="Buscar por asignatura o nombre del grupo...">
+            <!-- Se utiliza input-group para adherir un botón visual a la barra -->
+            <div class="input-group shadow-sm rounded">
+                <!-- Se acortó el placeholder para que no se corte en smartphones -->
+                <input type="text" class="form-control form-control-lg border-0" id="buscador_grupos_lista" placeholder="Buscar asignatura o grupo...">
+                <!-- El botón no necesita enviar formulario, sirve como apoyo visual e indicador de acción -->
+                <button class="btn btn-primary px-3 px-md-4" type="button" onclick="document.getElementById('buscador_grupos_lista').focus()">Buscar</button>
+            </div>
         </div>
     </div>
 
