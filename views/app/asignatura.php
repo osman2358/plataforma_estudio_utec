@@ -6,7 +6,7 @@ if (!isset($_SESSION['usuario_id'])) {
     exit();
 }
 
-require_once '../../models/Asignatura.php';
+require_once __DIR__ . '/../../models/Asignatura.php';
 $asignaturaModel = new Asignatura();
 $asignaturas = $asignaturaModel->obtenerActivas();
 
@@ -81,7 +81,7 @@ include '../layouts/header.php';
                                                 Editar
                                             </button>
 
-                                            <!-- Botón Eliminar (Formulario en línea) -->
+                                            <!-- Botón Eliminar -->
                                             <form action="../../controllers/AsignaturaController.php" method="POST" class="d-inline" onsubmit="return confirm('¿Estás seguro de eliminar esta asignatura? No se podrá borrar si ya tiene grupos vinculados.');">
                                                 <input type="hidden" name="accion" value="eliminar_asignatura">
                                                 <input type="hidden" name="id" value="<?= $asig['id']; ?>">
@@ -90,39 +90,6 @@ include '../layouts/header.php';
 
                                         </td>
                                     </tr>
-
-                                    <!-- Modal de Edición para cada fila -->
-                                    <div class="modal fade" id="modalEditar<?= $asig['id']; ?>" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" style="color: var(--color-primario);">Editar Asignatura</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                                                </div>
-                                                <form action="../../controllers/AsignaturaController.php" method="POST">
-                                                    <div class="modal-body text-start">
-                                                        <input type="hidden" name="accion" value="actualizar_asignatura">
-                                                        <input type="hidden" name="id" value="<?= $asig['id']; ?>">
-                                                        
-                                                        <div class="mb-3">
-                                                            <label class="form-label small">Código</label>
-                                                            <input type="text" class="form-control" name="codigo_materia" value="<?= htmlspecialchars($asig['codigo_materia']); ?>" required>
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label small">Nombre Completo</label>
-                                                            <input type="text" class="form-control" name="nombre" value="<?= htmlspecialchars($asig['nombre']); ?>" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Fin del Modal -->
-
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </tbody>
@@ -132,6 +99,44 @@ include '../layouts/header.php';
             </div>
         </div>
     </div>
+
+
+    <!-- ZONA DE MODALES (Fuera de la tabla HTML)   -->
+
+    <?php if(!empty($asignaturas)): ?>
+        <?php foreach($asignaturas as $asig): ?>
+        <div class="modal fade" id="modalEditar<?= $asig['id']; ?>" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" style="color: var(--color-primario);">Editar Asignatura</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <form action="../../controllers/AsignaturaController.php" method="POST">
+                        <div class="modal-body text-start">
+                            <input type="hidden" name="accion" value="actualizar_asignatura">
+                            <input type="hidden" name="id" value="<?= $asig['id']; ?>">
+                            
+                            <div class="mb-3">
+                                <label class="form-label small">Código</label>
+                                <input type="text" class="form-control" name="codigo_materia" value="<?= htmlspecialchars($asig['codigo_materia']); ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small">Nombre Completo</label>
+                                <input type="text" class="form-control" name="nombre" value="<?= htmlspecialchars($asig['nombre']); ?>" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    <?php endif; ?>
+
 </main>
 
 <?php include '../layouts/footer.php'; ?>
