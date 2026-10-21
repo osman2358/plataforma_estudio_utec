@@ -1,6 +1,5 @@
 <?php
 // Configuración dinámica de la ruta base del proyecto para evitar enlaces rotos.
-// Asegúrate de que la carpeta en htdocs se llame exactamente 'plataforma_estudio'.
 $protocol = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
 $host = $_SERVER['HTTP_HOST'];
 $folder = "/plataforma_estudio_utec"; 
